@@ -5,7 +5,7 @@
 		<div class="five wide column">
 			<div class="ui fluid card">
 				<div class="image">
-					<img src="{{url('https://sisfo.raudhah.ac.id/img/user')}}/{{$user->photo ?? 'nopic.png'}}">
+					<img src="{{url('https://sisfo.raudhah.ac.id/assets/img/user')}}/{{$user->photo ?? 'nopic.png'}}">
 				</div>
 				<div class="content">
 					<a class="header">{{$user->name}}</a>
@@ -77,7 +77,7 @@
 						<div class="label">Santri Putra</div>
 					</div>
 					<div class="statistic">
-						<div class="value">{{$members->where('gender', '!=', 'L')->count()}}</div>
+						<div class="value">{{$students->where('gender', 'P')->count()}}</div>
 						<div class="label">Santri Putri</div>
 					</div>
 				</div>
