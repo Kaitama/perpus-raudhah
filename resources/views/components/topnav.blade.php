@@ -3,7 +3,7 @@
 		<a href="#" class="sidebar-menu-toggler item" data-target="#sidebar">
 			<i class="sidebar icon"></i>
 		</a>
-		<a href="#" class="header item">
+		<a href="{{url('/')}}" class="header item">
 			RAUDHAH
 		</a>
 	</div>
@@ -14,13 +14,9 @@
 			<img class="ui avatar image" src="{{Auth::user()->photo ? url('https://sisfo.raudhah.ac.id/assets/img/user/' . Auth::user()->photo) : url('https://sisfo.raudhah.ac.id/assets/img/user/nopic.png')}}">
 			<span class="nav-username">{{ucfirst(Auth::user()->name)}}</span>
 			<div class="menu">
-				<a href="#" class="item">
-					<i class="info circle icon"></i> 
-					Profile
-				</a>
-				<a href="#" class="item">
+				<a href="#" class="item changepassword">
 					<i class="wrench icon"></i>
-					Settings
+					Ubah Password
 				</a>
 				<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="item">
 					<i class="sign-out icon"></i>

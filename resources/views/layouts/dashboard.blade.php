@@ -74,7 +74,7 @@
 		</div>
 	</div>
 	
-	
+	@livewire('settings.change-password')
 	
 	<!-- Scripts -->
 	{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -85,6 +85,9 @@
 	@livewireScripts
 	<script>
 		$(document).ready(function(){
+			$('.changepassword').click(function(){
+				$('#modalChangePassword').modal('show');
+			});
 			$('table').tablesort();
 			window.livewire.on('showModalCreate', () => {
 				$('#modalCreate').modal('show');

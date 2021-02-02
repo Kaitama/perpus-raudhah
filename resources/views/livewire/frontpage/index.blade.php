@@ -1,7 +1,9 @@
 <div>
 	<div class="ui text container">
-		<h1 class="ui inverted header">Perpustakaan Pesantren
-		<br>Ar-Raudlatul Hasanah</h1>
+		<h1 class="ui inverted header">
+			Perpustakaan Pesantren
+			<br>Ar-Raudlatul Hasanah
+		</h1>
 	</div>
 	<div class="ui text container" style="margin-top: 20px; text-align: left!important">
 		<div class="ui input icon fluid huge">

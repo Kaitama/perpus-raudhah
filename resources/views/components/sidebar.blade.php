@@ -33,7 +33,7 @@ $s = Request::segment(2);
 			Basis Data
 		</div>
 	</div>
-	@role('admin perpus')
+	@role('admin perpus|developer')
 	<a href="{{route('staffs.index')}}" class="item{{$s == 'staffs' ? ' active' : ''}}">
 		<div>
 			<i class="users icon grey"></i>
@@ -66,7 +66,7 @@ $s = Request::segment(2);
 		</div>
 	</a>
 
-	@role('admin perpus')
+	@role('admin perpus|developer')
 	<div class="item">
 		<div class="sidebar-header">
 			Laporan

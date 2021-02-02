@@ -15,7 +15,7 @@
 	<meta name="keywords" content="Raudhah, Perpustakaan, Libary" />
 	<meta name="author" content="PPType" />
 	<meta name="theme-color" content="#ffffff" />
-	<title>Homepage Template for Semantic-UI</title>
+	<title>Perpustakaan Pesantren Ar-Raudlatul Hasanah</title>
 	<link
 	rel="stylesheet"
 	href="{{asset('semantic/semantic.css')}}"
@@ -85,13 +85,14 @@
 				@endauth
 				@endif
 			</div>
+			
 			<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
 				@csrf
 			</form>
 		</div>
 		@livewire('frontpage.index')
+		
 	</div>
-	
 	<div class="ui vertical stripe segment">
 		<div class="ui middle aligned stackable grid container">
 			<div class="row">
@@ -119,26 +120,33 @@
 			<div class="three wide column">
 				<h4 class="ui inverted header">About</h4>
 				<div class="ui inverted link list">
-					<a class="item" href="#root">Sitemap</a>
-					<a class="item" href="#root">Contact Us</a>
-					<a class="item" href="#root">Religious Ceremonies</a>
-					<a class="item" href="#root">Gazebo Plans</a>
+					<a class="item" href="https://raudhah.ac.id">Website</a>
+					<a class="item" href="https://raudhah.ac.id/category/berita">Berita Terbaru</a>
+					<a class="item" href="http://stit-rh.ac.id/">STIT Ar-Raudlatul Hasanah</a>
+					<a class="item" href="https://perpus.raudhah.ac.id/">Perpustakaan</a>
 				</div>
 			</div>
 			<div class="three wide column">
-				<h4 class="ui inverted header">Services</h4>
+				<h4 class="ui inverted header">Profil</h4>
 				<div class="ui inverted link list">
-					<a class="item" href="#root">Banana Pre-Order</a>
-					<a class="item" href="#root">DNA FAQ</a>
-					<a class="item" href="#root">How To Access</a>
-					<a class="item" href="#root">Favorite X-Men</a>
+					<a class="item" href="https://raudhah.ac.id/sejarah-pesantren">Sejarah Pesantren</a>
+					<a class="item" href="https://raudhah.ac.id/ar-raudlatul-hasanah-2-lumut">Sejarah RH 2 Lumut</a>
+					<a class="item" href="https://raudhah.ac.id/visi-misi">Visi & Misi</a>
+					<a class="item" href="https://raudhah.ac.id/panca-jiwa">Panca Jiwa</a>
+					<a class="item" href="https://raudhah.ac.id/motto-pesantren">Motto Pesantren</a>
+					<a class="item" href="https://raudhah.ac.id/struktur-organisasi-2">Struktur Organisasi</a>
 				</div>
 			</div>
 			<div class="seven wide column">
-				<h4 class="ui inverted header">Footer Header</h4>
+				<h4 class="ui inverted header">Pesantren Ar-Raudlatul Hasanah</h4>
 				<p>
-					Extra space for a call to action inside the footer that could
-					help re-engage users.
+					Jl. Letjen. Jamin Ginting Km. 11 Paya Bundung/ Jl. Setia Budi Ujung Simpang Selayang, Medan, 20135 <br>
+					<div class="ui basic label icon">
+						<i class="phone icon"></i>0823 6266 4000
+					</div>
+					<div class="ui basic label icon">
+						<i class="mail icon"></i>sekretarispusatraudhah@gmail.com
+					</div>
 				</p>
 			</div>
 		</div>
