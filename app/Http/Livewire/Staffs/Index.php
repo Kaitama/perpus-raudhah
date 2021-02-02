@@ -44,6 +44,12 @@ class Index extends Component
 		$roles = Role::whereIn('name', ['admin perpus', 'staff perpus'])->get();
 		return view('livewire.staffs.index', ['users' => $users, 'roles' => $roles]);
 	}
+
+	public function resetSearch()
+	{
+		$this->search = '';
+		$this->searching = false;
+	}
 	
 	public function create()
 	{
