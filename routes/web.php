@@ -10,7 +10,6 @@ use App\Imports\BookImport;
 use App\Http\Controllers\BarcodeController;
 use App\Student;
 use Carbon\Carbon;
-use PDF;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,33 +31,27 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 	Route::group(['middleware' => ['role_or_permission:developer|m perpus']], function () {
 		// dashboard
 		Route::view('/', 'dashboard.index')->name('dashboard.index');
-
+		
 		// staffs
 		Route::view('/staffs', 'dashboard.staffs')->name('staffs.index')->middleware('role_or_permission:developer|admin perpus');
 		
 		// lendings
 		Route::view('/lendings', 'dashboard.lendings')->name('lendings.index');
-
+		
 		// returnings
 		Route::view('/returnings', 'dashboard.returnings')->name('returnings.index');
-
+		
 		// students
 		Route::view('/students', 'dashboard.students')->name('students.index');
-		Route::get('/students/libpass/{id}', function($id){
-			$now = Carbon::now();
-			$student = Student::find($id);
-			if($student->lendings->where('returned_at', null)->count() > 0) return abort(403);
-			$pdf = PDF::loadView('dashboard.libpass', ['student' => $student, 'now' => $now]);
-			return $pdf->stream('SURAT BEBAS PERPUSTAKAAN.pdf');
-		})->name('students.libpass');
-
+		Route::get('/students/libpass/{id}', [BarcodeController::class, 'libpass'])->name('students.libpass');
+		
 		// members
 		Route::view('/members', 'dashboard.members')->name('members.index');
 		Route::view('/members/show/{dataid}', 'dashboard.members-show')->name('members.show');
-
+		
 		// catalogs
 		Route::view('/catalogs', 'dashboard.catalogs')->name('catalogs.index');
-
+		
 		// books
 		Route::view('/books', 'dashboard.books')->name('books.index');
 		Route::get('/books/template', function(){
@@ -80,5 +73,5 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 			return Excel::download(new ReportLendingsExport($s, $e, $m), 'LAPORAN_PEMINJAMAN_' . time() . '.xlsx');
 		})->name('download.report.lendings')->middleware('role_or_permission:developer|admin perpus');;
 	});
-
+	
 });
