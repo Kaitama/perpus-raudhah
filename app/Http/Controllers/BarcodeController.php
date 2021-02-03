@@ -15,6 +15,7 @@ class BarcodeController extends Controller
 	{
 		$book = Book::find($id);
 		$pdf = PDF::loadView('dashboard.bookbarcode',['book' => $book]);
+		ob_get_clean();
 		return $pdf->stream('CETAK BARCODE BUKU.pdf');
 	}
 
@@ -24,6 +25,7 @@ class BarcodeController extends Controller
 			$student = Student::find($id);
 			if($student->lendings->where('returned_at', null)->count() > 0) return abort(403);
 			$pdf = PDF::loadView('dashboard.libpass', ['student' => $student, 'now' => $now]);
+			ob_get_clean();
 			return $pdf->stream('SURAT BEBAS PERPUSTAKAAN.pdf');
 	}
 }
