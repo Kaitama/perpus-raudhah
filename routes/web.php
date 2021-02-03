@@ -10,7 +10,7 @@ use App\Imports\BookImport;
 use App\Http\Controllers\BarcodeController;
 use App\Student;
 use Carbon\Carbon;
-// use PDF;
+use PDF;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +49,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 			$student = Student::find($id);
 			if($student->lendings->where('returned_at', null)->count() > 0) return abort(403);
 			$pdf = PDF::loadView('dashboard.libpass', ['student' => $student, 'now' => $now]);
-			return $pdf->stream('SURAT BEBAS PERPUSTAKAAN');
+			return $pdf->stream('SURAT BEBAS PERPUSTAKAAN.pdf');
 		})->name('students.libpass');
 
 		// members
