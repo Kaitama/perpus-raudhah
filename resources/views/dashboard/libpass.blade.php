@@ -18,7 +18,7 @@
 				<td><img src="{{asset('img/app/logo.png')}}" alt="" class="ui middle aligned tiny image"></td>
 				<td style="padding-left: 24px; text-align: center">
 					<h2 class="ui header center aligned">
-						PERPUSTAKAAN {{$student->gender == 'L' ? 'PRIA' : 'WANITA'}}
+						PERPUSTAKAAN {{$student->gender == 'L' ? 'PUTRA' : 'PUTRI'}}
 						<br>
 						PESANTREN AR-RAUDLATUL HASANAH
 					</h2>
@@ -42,7 +42,7 @@
 			<tr>
 				<td class="collapsing">Nama Lengkap</td>
 				<td class="collapsing">: &nbsp;</td>
-				<td>{{ucwords($student->name)}}</td>
+				<td>{{ucwords(strtolower($student->name))}}</td>
 			</tr>
 			<tr>
 				<td class="collapsing">Kelas</td>
@@ -51,7 +51,7 @@
 			</tr>
 		</table>
 		<br>
-		<p>Santri tersebut tidak memiliki pinjaman koleksi buku milik Perpustakaan {{$student->gender == 'L' ? 'Pria' : 'Wanita'}} Pesantren Ar-Raudlatul Hasanah.</p>
+		<p>Santri tersebut tidak memiliki pinjaman koleksi buku milik Perpustakaan {{$student->gender == 'L' ? 'Putra' : 'Putri'}} Pesantren Ar-Raudlatul Hasanah.</p>
 
 		<table>
 			<tr>

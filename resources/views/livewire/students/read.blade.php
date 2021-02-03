@@ -11,8 +11,8 @@
 			<div wire:ignore class="ui input">
 				<select wire:model="gen" class="ui dropdown">
 					<option value="1">Semua Santri</option>
-					<option value="L">Pria</option>
-					<option value="P">Wanita</option>
+					<option value="L">Putra</option>
+					<option value="P">Putri</option>
 				</select>
 			</div>
 			

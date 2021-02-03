@@ -12,10 +12,21 @@
 		<div class="column computer only"></div>
 		<div class="column right aligned">
 			<div wire:click="create" class="ui positive labeled icon button">
-				<i class="plus icon"></i> Add Member
+				<i class="plus icon"></i> Add New Member
 			</div>
 		</div>
 	</div>
+
+	@if($members->isEmpty())
+	<div class="ui icon message">
+		<i class="info icon"></i>
+		<div class="content">
+			<div class="header">Record empty!</div>
+			<p>Data member masih kosong, silahkan tambah data member melalui tombol <b>Add New Member</b>.</p>
+		</div>
+	</div>
+
+	@else
 	
 	<div class="ui stackable three column grid">
 		@foreach ($members as $m)
@@ -63,16 +74,13 @@
 		@endforeach
 	</div>
 	
-	@if($members->isEmpty())
-	<div class="ui message">Data tidak ditemukan.</div>
-	@endif
-	
 	<div class="ui grid">
 		<div class="column center aligned">
 			{{$members->links('vendor.livewire.semantic')}}
 		</div>
 	</div>
 	
+	@endif
 	
 	
 	{{-- modal confirm delete --}}
