@@ -11,9 +11,11 @@
 		</div>
 		<div class="column computer only"></div>
 		<div class="column right aligned">
+			@can('r perpus')
 			<div wire:click="create" class="ui positive labeled icon button">
 				<i class="plus icon"></i> Add New Member
 			</div>
+			@endcan
 		</div>
 	</div>
 
@@ -64,8 +66,12 @@
 				<div class="extra content">
 					<div class="ui three tiny buttons">
 						<div class="ui basic green button" wire:click="show({{$m->id}})">History</div>
+						@can('r perpus')
 						<div class="ui basic grey button showModalEdit" wire:click="edit({{$m->id}})">Edit</div>
+						@endcan
+						@can('d perpus')
 						<div class="ui basic red button" wire:click="confirmDelete({{$m->id}})">Delete</div>
+						@endcan
 					</div>
 				</div>
 			</div>
@@ -82,7 +88,7 @@
 	
 	@endif
 	
-	
+	@can('d perpus')
 	{{-- modal confirm delete --}}
 	<div id="modalDelete" class="ui tiny modal">
 		<div class="header">
@@ -109,7 +115,9 @@
 			</div>
 		</div>
 	</div>
+	@endcan
 	
+	@can('r perpus')
 	{{-- modal create --}}
 	<div wire:ignore.self id="modalCreate" class="ui modal">
 		<div class="header">
@@ -282,7 +290,8 @@
 			</div>
 		</div>
 	</div>
-	
+	@endcan
+
 	{{-- modal details --}}
 	<div id="modalDetails" class="ui modal">
 		<div class="header">

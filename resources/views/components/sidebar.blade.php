@@ -6,7 +6,7 @@ $s = Request::segment(2);
 		<img src="{{asset('img/app/logo.png')}}" class="ui small image centered" alt="Raudhah">
 	</div>
 	
-	@can('m perpus')
+	
 
 	<a href="{{route('dashboard.index')}}" class="item{{$s == null ? ' active' : ''}}">
 		<div>
@@ -14,6 +14,7 @@ $s = Request::segment(2);
 			Dashboard
 		</div>
 	</a>
+	@can('r perpus')
 	<a href="{{route('lendings.index')}}" class="item{{$s == 'lendings' ? ' active' : ''}}">
 		<div>
 			<i class="icon share square grey"></i>
@@ -26,21 +27,23 @@ $s = Request::segment(2);
 			Pengembalian Buku
 		</div>
 	</a>
-	
+	@endcan
 	
 	<div class="item">
 		<div class="sidebar-header">
 			Basis Data
 		</div>
 	</div>
-	@role('admin perpus|developer')
+	
+	@can('m perpus')
 	<a href="{{route('staffs.index')}}" class="item{{$s == 'staffs' ? ' active' : ''}}">
 		<div>
 			<i class="users icon grey"></i>
 			Data Pegawai
 		</div>
 	</a>
-	@endrole
+	@endcan
+	
 	<a href="{{route('students.index')}}" class="item{{$s == 'students' ? ' active' : ''}}">
 		<div>
 			<i class="id card icon grey"></i>
@@ -66,7 +69,7 @@ $s = Request::segment(2);
 		</div>
 	</a>
 
-	@role('admin perpus|developer')
+	@can(['m perpus'])
 	<div class="item">
 		<div class="sidebar-header">
 			Laporan
@@ -78,9 +81,8 @@ $s = Request::segment(2);
 			Laporan Peminjaman
 		</div>
 	</a>
-	@endrole
-	
 	@endcan
+	
 
 	<div class="ui basic segment">
 		<strong>&copy;{{date('Y')}} <a href="{{env('APP_URL')}}">{{env('APP_NAME')}}</a></strong><br> 

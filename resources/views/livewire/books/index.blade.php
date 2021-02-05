@@ -436,7 +436,7 @@
 										</h4>
 									</td>
 									<td>
-										<div class="ui compact selection dropdown fluid{{$bk->lended ? ' disabled' : ''}}">
+										<div class="ui compact selection dropdown fluid @if($bk->lended || Auth::user()->cannot('r perpus')) disabled @endif">
 											<div class="text">
 												@switch($bk->status)
 												@case(1) Baik @break
@@ -475,11 +475,13 @@
 			</div>
 		</div>
 		<div class="actions">
+			@can('r perpus')
 			@if($bd)
 			<a target="_blank" href="{{route('books.barcode', $bd->id)}}" class="ui left floated teal button">
 				Download Barcode
 			</a>
 			@endif
+			@endcan
 			<div class="ui black deny button">
 				Close
 			</div>

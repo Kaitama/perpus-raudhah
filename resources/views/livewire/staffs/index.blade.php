@@ -11,9 +11,11 @@
 		</div>
 		<div class="column computer only"></div>
 		<div class="column right aligned">
+			@role('administrator')
 			<div wire:click="create" class="ui positive labeled icon button">
 				<i class="plus icon"></i> Add Staff
 			</div>
+			@endrole
 		</div>
 	</div>
 	
@@ -35,7 +37,9 @@
 				<th>Nama Lengkap</th>
 				<th>Role</th>
 				<th>Status</th>
+				@role('administrator')
 				<th>Options</th>
+				@endrole
 			</tr>
 		</thead>
 		<tbody>
@@ -51,25 +55,25 @@
 					</h5>
 				</td>
 				<td class="collapsing">
-					<h5 class="ui header">
-						{{ucwords($u->getRoleNames()->implode(','))}} 
-					</h5>
+						{{ucwords($u->getRoleNames()->implode(', '))}} 
 				</td>
 				<td class="collapsing">
 					<h5 class="ui header">
 						@if ($u->status)
-						<a class="ui tiny green label" data-tooltip="{{$u->name}} sedang login.">Online</a>
+						<a class="ui tiny green label" data-tooltip="{{$u->name}} sedang login." data-position="left center">Online</a>
 						@else
-						<a class="ui tiny label" @if($u->state) data-tooltip="Terakhir login {{$u->state->lastseen_at->diffForHumans()}}." @else data-tooltip="{{$u->name}} belum pernah login." @endif>Offline</a>
+						<a class="ui tiny label" @if($u->state) data-tooltip="Terakhir login {{$u->state->lastseen_at->diffForHumans()}}." @else data-tooltip="{{$u->name}} belum pernah login." @endif data-position="left center">Offline</a>
 						@endif
 					</h5>
 				</td>
+				@role('administrator')
 				<td class="collapsing">
 					<div class="ui basic icon buttons">
 						<div wire:click="edit({{$u->id}})" class="ui button" data-tooltip="Edit" data-inverted=""><i class="edit icon"></i></div>
 						<div wire:click="confirmDelete({{$u->id}})" class="ui button{{Auth::id() == $u->id ? ' disabled' : ''}}" data-tooltip="Delete" data-inverted=""><i class="trash icon"></i></div>
 					</div>
 				</td>
+				@endrole
 			</tr>
 			@endforeach
 		</tbody>
@@ -83,7 +87,7 @@
 	
 	@endif
 	
-	
+	@role('administrator')
 	{{-- modal create --}}
 	<div wire:ignore.self id="modalCreate" class="ui modal">
 		<div class="header">
@@ -220,6 +224,6 @@
 			</div>
 		</div>
 	</div>
-	
+	@endrole
 	
 </div>

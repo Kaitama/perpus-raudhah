@@ -164,11 +164,13 @@
 			</div>
 		</div>
 		<div class="actions">
+			@can('r perpus')
 			@if($student)
 			<a target="_blank" href="{{route('students.libpass', $student->id ?? '')}}" class="ui labeled icon teal button left floated {{$student->lendings->where('returned_at', null)->count() > 0 ? 'disabled' : ''}}">
 				<i class="print icon"></i> Surat Bebas Perpus
 			</a>
 			@endif
+			@endcan
 			<div class="ui black deny button">
 				Close
 			</div>
