@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use App\Catalog;
 use App\Book;
 use App\Bookdetail;
+use ZipArchive;
+use Storage;
 
 class Index extends Component
 {
@@ -245,6 +247,37 @@ class Index extends Component
 	{
 		$this->title = null; $this->author = null; $this->year = null; /* $this->isbn = null; */ $this->publisher = null; $this->exemplar = 1;
 		$this->source = null; $this->description = null; $this->purchased_at = date('d/m/Y'); $this->price = 0; $this->lendable = 1; $this->idtoedit = null; $this->catalog = null;
+	}
+	
+	public function downloadBarcode(){
+		$details = Bookdetail::all();
+		$public_dir=public_path();
+		// Zip File Name
+		$zipFileName = 'barcode_buku.zip';
+		// Create ZipArchive Obj
+		$zip = new ZipArchive;
+		if ($zip->open($public_dir . '/' . $zipFileName, ZipArchive::CREATE) === TRUE) {
+			$filearray = array();
+			// Add Multiple file   
+			foreach($details as $k => $file) {
+				$barcode = \DNS1D::getBarcodePNG($file->barcode, "C128", 3, 64);
+				Storage::disk('barcode')->put($file->barcode . '.png', base64_decode($barcode));
+				$filename = $file->barcode . '.png';
+				$zip->addFile(public_path('barcode/' . $file->barcode . '.png'), $filename);
+				array_push($filearray, $filename);
+			}        
+			$zip->close();
+			Storage::disk('barcode')->delete($filearray);
+		}
+		// Set Header
+		$headers = array(
+			'Content-Type' => 'application/octet-stream',
+		);
+		$filetopath=$public_dir.'/'.$zipFileName;
+		// Create Download Response
+		if(file_exists($filetopath)){
+			return response()->download($filetopath,$zipFileName,$headers);
+		}
 	}
 	
 }

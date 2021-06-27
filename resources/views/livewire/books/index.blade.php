@@ -31,6 +31,9 @@
 					<a href="{{route('books.export')}}" class="item">
 						<i class="download icon"></i> Export Excel
 					</a>
+					<div wire:click="downloadBarcode" class="item">
+						<i class="barcode icon"></i> Download Barcode
+					</div>
 				</div>
 			</div>
 			<div wire:click="create" class="ui positive labeled icon button">

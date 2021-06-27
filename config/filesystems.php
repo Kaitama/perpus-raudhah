@@ -54,6 +54,13 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+				
+				'barcode' => [
+					'driver' => 'local',
+					'root' => public_path() . '/barcode',
+					// 'url' => url('assets/img/user'),
+					'visibility' => 'public',
+				],
 
         's3' => [
             'driver' => 's3',
